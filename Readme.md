@@ -1,4 +1,4 @@
-FastAPI ML Model Deployment
+# FastAPI ML Model Deployment
 
 This project demonstrates how to deploy a machine learning model using FastAPI, a modern web framework for building APIs with Python 3.7+ based on standard Python type hints. The API allows users to upload CSV files, receive predictions from a trained model, and get model explanations using SHAP (SHapley Additive exPlanations).
 Features
@@ -7,40 +7,30 @@ Features
     /explain/: Upload a CSV file and get SHAP explanations for the model's predictions.
     Preprocessing is handled automatically using custom Python scripts.
 
-Project Structure
-
-bash
+# Project Structure
 
 fastapi_ml_deployments/
 │
 ├── app/
 │   ├── __init__.py              # Package initialization
 │   ├── main.py                  # Main FastAPI application
-│   ├── model.py                 # Model loading and prediction logic
-│   ├── preprocess.py            # Data preprocessing functions
-│   ├── explain.py               # SHAP explanation logic
-│
-├── model/                       # Directory containing pre-trained model
-│   └── best_model.pkl           # Serialized model file
-│
-├── data/                        # Sample data files for testing
-│   └── sample_input.csv         # Example input data
+│   ├── model.pkl                # Model pkl file         
+│   ├── explain.py               # SHAP explanation logic              
+│   sample_input.csv             # Example input data
 │
 ├── README.md                    # Project documentation
 ├── requirements.txt             # Python dependencies
 └── .gitignore                   # Files/folders to ignore in git
 
-Getting Started
+# Getting Started
 Prerequisites
 
     Python 3.8+
     Install conda or pip as your package manager
 
-Installation
+# Installation
 
     Clone the repository:
-
-    bash
 
 git clone https://github.com/yourusername/fastapi_ml_deployments.git
 cd fastapi_ml_deployments
@@ -53,21 +43,15 @@ python -m venv myenv
 source myenv/bin/activate  # For Linux/macOS
 myenv\Scripts\activate     # For Windows
 
-Install dependencies:
-
----------
+# Install dependencies:
 
     pip install -r requirements.txt
 
     Ensure that you have the machine learning model file (best_model.pkl) placed in the model/ directory.
 
-Running the Application
+# Running the Application
 
-    Start the FastAPI server:
-
---------
-
-uvicorn app.main:app --reload
+    Start the FastAPI server:  uvicorn app.main:app --reload
 
 Go to http://127.0.0.1:8000 in your browser. You should see a welcome message.
 
@@ -83,7 +67,7 @@ Example request (using cURL):
       -H 'Content-Type: multipart/form-data' \
       -F 'file=@data/sample_input.csv;type=text/csv'
 
-API Endpoints
+# API Endpoints
 
     GET /:
         Returns a welcome message.
@@ -96,7 +80,7 @@ API Endpoints
         Input: CSV file
         Output: JSON response containing SHAP explanations.
 
-Example Input
+# Example Input
 
 The API expects a CSV file where each row contains features for model prediction. An example file might look like this:
 
@@ -109,7 +93,7 @@ age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal
 
 -----
 
-SHAP Explanation
+# SHAP Explanation
 
 The /explain/ endpoint provides a SHAP explanation for each prediction, allowing you to interpret model behavior.
 Testing
